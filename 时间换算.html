@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间换算器: 洛杉矶 ↔ 首尔</title>
+    <style>
+        body {
+            font-family: 'Microsoft Yahei', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 10%;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="date"], input[type="time"] {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.4em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>时间换算器: 洛杉矶 ↔ 首尔</h1>
+        <p>选择日期和时间进行换算</p>
+
+        <label for="laDate">洛杉矶日期和时间:</label><br>
+        <input type="date" id="laDate">
+        <input type="time" id="laTime">
+        <button onclick="convertToSeoul()">换算为首尔时间</button>
+
+        <br><br>
+
+        <label for="seoulDate">首尔日期和时间:</label><br>
+        <input type="date" id="seoulDate">
+        <input type="time" id="seoulTime">
+        <button onclick="convertToLA()">换算为洛杉矶时间</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convertToSeoul() {
+            let laDate = document.getElementById('laDate').value;
+            let laTime = document.getElementById('laTime').value;
+            if (!laDate || !laTime) {
+                alert("请选择洛杉矶的日期和时间");
+                return;
+            }
+
+            let laDateTime = new Date(`${laDate}T${laTime}`);
+            laDateTime.setHours(laDateTime.getHours() + 16); // 加16小时
+
+            document.getElementById('result').innerText = `首尔日期和时间: ${laDateTime.toISOString().slice(0, 10)} ${laDateTime.toTimeString().slice(0, 5)}`;
+        }
+
+        function convertToLA() {
+            let seoulDate = document.getElementById('seoulDate').value;
+            let seoulTime = document.getElementById('seoulTime').value;
+            if (!seoulDate || !seoulTime) {
+                alert("请选择首尔的日期和时间");
+                return;
+            }
+
+            let seoulDateTime = new Date(`${seoulDate}T${seoulTime}`);
+            seoulDateTime.setHours(seoulDateTime.getHours() - 16); // 减16小时
+
+            document.getElementById('result').innerText = `洛杉矶日期和时间: ${seoulDateTime.toISOString().slice(0, 10)} ${seoulDateTime.toTimeString().slice(0, 5)}`;
+        }
+    </script>
+
+</body>
+</html>
