@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首尔实时天气</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .weather-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 { margin: 0 0 10px; font-size: 1.5rem; color: #333; }
+        .temp { font-size: 3rem; font-weight: bold; color: #2c3e50; margin: 10px 0; }
+        .desc { color: #7f8c8d; font-size: 1.1rem; }
+        .loading { color: #999; font-size: 0.9rem; }
+        .btn {
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="weather-card">
+        <h1>首尔 (Seoul)</h1>
+        <div id="weather-display">
+            <p class="loading">正在获取天气数据...</p>
+        </div>
+        <button class="btn" onclick="getWeather()">刷新天气</button>
+    </div>
+
+    <script>
+        // 首尔的经纬度
+        const LAT = 37.5665;
+        const LON = 126.9780;
+        // Open-Meteo API 地址
+        const API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true`;
+
+        // 天气代码映射（将数字转换为文字）
+        const weatherCodes = {
+            0: "晴朗", 1: "大致晴朗", 2: "多云", 3: "阴天",
+            45: "有雾", 48: "雾凇", 
+            51: "毛毛雨", 53: "中雨", 55: "大雨",
+            61: "小雨", 63: "中雨", 65: "大雨",
+            80: "阵雨", 95: "雷雨", 96: "雷雨伴有冰雹"
+        };
+
+        async function getWeather() {
+            const display = document.getElementById('weather-display');
+            display.innerHTML = '<p class="loading">更新中...</p>';
+
+            try {
+                // 发起网络请求
+                const response = await fetch(API_URL);
+                const data = await response.json();
+
+                // 提取当前天气数据
+                const current = data.current_weather;
+                const temp = current.temperature;
+                const code = current.weathercode;
+                const wind = current.windspeed;
+                
+                // 获取天气描述，如果没有对应的代码则显示"未知"
+                const description = weatherCodes[code] || "未知天气";
+
+                // 更新页面 DOM
+                display.innerHTML = `
+                    <div class="temp">${temp}°C</div>
+                    <div class="desc">${description}</div>
+                    <div style="margin-top:10px; font-size:0.9rem; color:#666;">
+                        风速: ${wind} km/h
+                    </div>
+                `;
+            } catch (error) {
+                console.error("获取天气失败:", error);
+                display.innerHTML = '<p style="color:red;">获取数据失败，请检查网络</p>';
+            }
+        }
+
+        // 页面加载完成后自动执行一次
+        window.onload = getWeather;
+    </script>
+
+</body>
+</html>
