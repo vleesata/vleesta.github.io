@@ -3,67 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人工具箱 | My Toolbox</title>
+    <title>我的个人工具箱 | 开发者 & 效率控</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        /* 引入一个现代、干净的无衬线字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        
+        /* 微调：给卡片添加一个平滑的浮起动画 */
+        .tool-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .tool-card:hover { transform: translateY(-4px); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-gray-50 text-gray-800">
 
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-indigo-600">MyToolbox</h1>
-            <div class="space-x-4 text-sm text-slate-600">
-                <a href="#" class="hover:text-indigo-600">更新日志</a>
-                <a href="#" class="hover:text-indigo-600">关于我</a>
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                MyTools_
+            </div>
+            <div class="flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="/" class="hover:text-blue-600">首页</a>
+                <a href="https://github.com/yourname" target="_blank" class="hover:text-blue-600">GitHub</a>
+                <a href="#" class="hover:text-blue-600">关于</a>
             </div>
         </div>
     </nav>
 
-    <header class="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 class="text-4xl font-extrabold mb-4">简单，但不止于简单</h2>
-        <p class="text-slate-500 text-lg">收集整理我最常用的效率工具，旨在让工作流更顺畅。</p>
+    <header class="max-w-4xl mx-auto px-4 py-16 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">便捷、私密、高效</h2>
+        <p class="text-gray-500 text-lg">这是我的个人专属工具箱，所有工具均在本地运行，保护隐私。</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main class="max-w-6xl mx-auto px-4 pb-24">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <a href="/tools/json-formatter" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
-                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-indigo-600 transition-colors">
-                    <span class="text-2xl group-hover:scale-110 transition-transform">✨</span>
+            <a href="/tools/json-handler.html" class="tool-card block p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200">
+                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">JSON 格式化</h3>
-                <p class="text-sm text-slate-500 italic">自动美化并校验 JSON 数据结构。</p>
+                <h3 class="text-lg font-bold mb-2 text-gray-900">JSON 转换工具</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">支持 JSON 格式化、压缩以及转义，开发者的日常必备。</p>
             </a>
-
-            <a href="/tools/unit-converter" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
-                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600 transition-colors">
-                    <span class="text-2xl group-hover:scale-110 transition-transform">⚖️</span>
+            <a href="/tools/image-compress.html" class="tool-card block p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-green-200">
+                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-lg flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">单位转换器</h3>
-                <p class="text-sm text-slate-500 italic">支持长度、重量及程序员常用的进制转换。</p>
+                <h3 class="text-lg font-bold mb-2 text-gray-900">图片压缩</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">纯浏览器端实现图片压缩，无需上传服务器，保护隐私。</p>
             </a>
-
-            <a href="/tools/password-gen" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
-                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors">
-                    <span class="text-2xl group-hover:scale-110 transition-transform">🔒</span>
+            <a href="/tools/base64.html" class="tool-card block p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-purple-200">
+                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                    <span class="text-xl font-bold">B64</span>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">真实湿度计算</h3>
-                <p class="text-sm text-slate-500 italic">计算当前真实湿度</p>
+                <h3 class="text-lg font-bold mb-2 text-gray-900">Base64 编解码</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">快速对文本或图片进行 Base64 编码与解码操作。</p>
             </a>
-
-            <a href="shidu.html" class="group p-6 bg-white rounded-2xl border border-dashed border-slate-300 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-                <div class="text-3xl text-slate-300 mb-2">+</div>
-                <p class="text-sm font-medium text-slate-400">更多工具开发中...</p>
-            </a>
+            <div class="p-6 bg-gray-100 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400">
+                <span class="text-sm font-medium">新工具规划中...</span>
+            </div>
 
         </div>
     </main>
 
-    <footer class="border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
-        <p>© 2026 MyToolbox. </p>
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">© 2026 我的个人工具箱.</p>
+        </div>
     </footer>
 
 </body>
