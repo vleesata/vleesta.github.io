@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人工具箱 | My Toolbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-indigo-600">MyToolbox</h1>
+            <div class="space-x-4 text-sm text-slate-600">
+                <a href="#" class="hover:text-indigo-600">更新日志</a>
+                <a href="#" class="hover:text-indigo-600">关于我</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-6xl mx-auto px-4 py-16 text-center">
+        <h2 class="text-4xl font-extrabold mb-4">简单，但不止于简单</h2>
+        <p class="text-slate-500 text-lg">收集整理我最常用的效率工具，旨在让工作流更顺畅。</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <a href="/tools/json-formatter" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-indigo-600 transition-colors">
+                    <span class="text-2xl group-hover:scale-110 transition-transform">✨</span>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">JSON 格式化</h3>
+                <p class="text-sm text-slate-500 italic">自动美化并校验 JSON 数据结构。</p>
+            </a>
+
+            <a href="/tools/unit-converter" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600 transition-colors">
+                    <span class="text-2xl group-hover:scale-110 transition-transform">⚖️</span>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">单位转换器</h3>
+                <p class="text-sm text-slate-500 italic">支持长度、重量及程序员常用的进制转换。</p>
+            </a>
+
+            <a href="/tools/password-gen" class="group p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
+                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-600 transition-colors">
+                    <span class="text-2xl group-hover:scale-110 transition-transform">🔒</span>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">密码生成器</h3>
+                <p class="text-sm text-slate-500 italic">生成强随机密码，保护你的账号安全。</p>
+            </a>
+
+            <a href="#" class="group p-6 bg-white rounded-2xl border border-dashed border-slate-300 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+                <div class="text-3xl text-slate-300 mb-2">+</div>
+                <p class="text-sm font-medium text-slate-400">更多工具开发中...</p>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
+        <p>© 2026 MyToolbox. 保持好奇，持续创造。</p>
+    </footer>
+
+</body>
+</html>
